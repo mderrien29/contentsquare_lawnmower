@@ -1,4 +1,4 @@
-import { Tuple } from "./interfaces";
+import { Tuple } from "../interfaces";
 
 export const cardinalDirectionsMapping: any = {
   N: [0, 1],

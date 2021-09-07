@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [ "es2018" ],
+    "target": "es6",
+    "moduleResolution" : "node",
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": ["node"],
+    "esModuleInterop": true
+  },
+  "include" : [
+    "src",
+    "test"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

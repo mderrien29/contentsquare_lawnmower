@@ -1,5 +1,5 @@
-import { Tuple } from "./interfaces";
-import { vectorToCardinalDirection } from "./utils";
+import { Tuple } from "../interfaces";
+import { vectorToCardinalDirection } from "./cardinal-directions";
 
 export class Mower {
   public position: Tuple<number>;
@@ -22,16 +22,14 @@ export class Mower {
   }
 
   public turnLeft(): this {
-    this.turn([-1, 1]);
-    return this;
+    return this.turn([-1, 1]);
   }
 
   public turnRight(): this {
-    this.turn([1, -1]);
-    return this;
+    return this.turn([1, -1]);
   }
 
-  public toTxt(): string {
+  public toString(): string {
     return `${this.position[0]} ${this.position[1]} ${vectorToCardinalDirection(
       this.direction
     )}`;

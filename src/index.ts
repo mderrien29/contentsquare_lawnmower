@@ -1,21 +1,13 @@
-import { Lawn } from "./lawn";
-import { Mower } from "./mower";
-import { getSimulationConfig } from "./config";
-import { SimulationConfig } from "./interfaces";
+import { Lawn } from "./lib/lawn";
+import { ConfigFileAdapter } from "./config/config-file-adapter";
 
-const runSimulations = (config: SimulationConfig): void => {
-  console.dir(config, { depth: null });
+const filepath = process.argv[2];
+if (!filepath) {
+  console.error("Please provide a filepath argument");
+  process.exit(1);
+}
 
-  const lawn = new Lawn(config.dimensions);
-
-  config.mowers.forEach((mowerConfig) => {
-    const mower = lawn.simulate(
-      new Mower(mowerConfig.position, mowerConfig.direction),
-      mowerConfig.instructions
-    );
-
-    console.log(mower.toTxt());
-  });
-};
-
-getSimulationConfig("./src/input.txt").then((config) => runSimulations(config));
+new ConfigFileAdapter()
+  .loadConfigFile(filepath)
+  .then((config) => Lawn.runSimulation(config))
+  .catch(console.error);

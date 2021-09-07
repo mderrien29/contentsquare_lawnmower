@@ -3,11 +3,11 @@
 ## Installation
 
 ```
-yarn
+yarn install
 ```
 
 ## Starting the application
 
 ```
-yarn run:dev
+yarn start
 ```

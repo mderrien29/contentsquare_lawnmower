@@ -1,10 +1,23 @@
-import { Tuple } from "./interfaces";
+import { SimulationConfig, Tuple } from "../interfaces";
 import { Mower } from "./mower";
 
 export class Lawn {
   constructor(private readonly dimensions: Tuple<number>) {}
 
-  public simulate(mower: Mower, instructions: string): Mower {
+  public static runSimulation(config: SimulationConfig): void {
+    const lawn = new Lawn(config.dimensions);
+
+    config.mowers.forEach((mowerConfig) => {
+      const mower = lawn.simulateMower(
+        new Mower(mowerConfig.position, mowerConfig.direction),
+        mowerConfig.instructions
+      );
+
+      console.log(mower.toString());
+    });
+  }
+
+  private simulateMower(mower: Mower, instructions: string): Mower {
     for (const instruction of instructions) {
       this.applyInstruction(mower, instruction);
     }
