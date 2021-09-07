@@ -9,5 +9,5 @@ yarn install
 ## Starting the application
 
 ```
-yarn start
+yarn start:dev
 ```
