@@ -16,5 +16,5 @@ yarn start:dev
 
 ```
 yarn build
-yarn start
+yarn start <filepath>
 ```

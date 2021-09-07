@@ -4,7 +4,7 @@
   "description": "Lawn mower exercise",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node src/index.ts config.txt",
+    "start:dev": "ts-node src/index.ts resources/config.txt",
     "build": "tsc",
     "start": "node dist/src/index.js"
   },
