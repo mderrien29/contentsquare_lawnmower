@@ -1,4 +1,4 @@
-import { SimulationConfig, Tuple } from "../interfaces";
+import { SimulationConfig, Tuple, Command } from "../interfaces";
 import { Mower } from "./mower";
 
 export class Lawn {
@@ -27,21 +27,21 @@ export class Lawn {
 
   private applyInstruction(mower: Mower, instruction: string): Mower {
     switch (instruction) {
-      case "L":
+      case Command.Left:
         mower.turnLeft();
         break;
-      case "R":
+      case Command.Right:
         mower.turnRight();
         break;
-      case "F":
-        mower = this.moveMowerUnlessOutOfBounds(mower);
+      case Command.Forward:
+        mower = this.moveMowerForwardUnlessOutOfBounds(mower);
         break;
     }
 
     return mower;
   }
 
-  private moveMowerUnlessOutOfBounds(mower: Mower): Mower {
+  private moveMowerForwardUnlessOutOfBounds(mower: Mower): Mower {
     mower.moveForward();
     if (!this.isMowerOnLawn(mower)) {
       mower.moveBackward();

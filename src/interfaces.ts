@@ -10,3 +10,9 @@ export interface MowerConfig {
   direction: Tuple<number>;
   instructions: string;
 }
+
+export enum Command {
+  Left = "L",
+  Right = "R",
+  Forward = "F",
+}
