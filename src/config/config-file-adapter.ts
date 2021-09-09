@@ -5,18 +5,17 @@ const readFile = promisify(fs.readFile);
 import { Tuple, SimulationConfig, MowerConfig } from "../interfaces";
 import { cardinalDirectionsToVector } from "../lib/cardinal-directions";
 
-// TODO could be config option
-const fileEncoding = "utf-8";
-const eol = "\n";
-
 export class ConfigFileAdapter implements SimulationConfig {
   private lines: string[] = [];
 
-  constructor() {}
+  constructor(
+    private readonly encoding: BufferEncoding = "utf-8",
+    private readonly eol: string = "\n"
+  ) {}
 
   public async loadConfigFile(filepath: string): Promise<this> {
-    const fileData = await readFile(filepath, fileEncoding);
-    this.lines = fileData.split(eol);
+    const fileData = await readFile(filepath, this.encoding);
+    this.lines = fileData.split(this.eol);
     return this;
   }
 
